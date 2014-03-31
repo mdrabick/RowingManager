@@ -42,4 +42,14 @@
         android:textSize="30sp" 
         android:text="@string/blank" />
 
+    <com.example.rowingmanager.MilliChrono
+        android:id="@+id/millichrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/blank"
+        android:textSize="30sp" />
+
 </RelativeLayout>
