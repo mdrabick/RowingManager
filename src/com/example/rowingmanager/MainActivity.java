@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
 
 
@@ -15,7 +14,6 @@ public class MainActivity extends Activity {
 	
 	
     static long startTime;
-	static Chronometer chrono;
 	static MilliChrono milli_chrono;
 	public static Button stop_button;
 	public static Button start_button;
@@ -27,12 +25,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		field = (TextView)findViewById(R.id.field);
-		chrono = (Chronometer)findViewById(R.id.chronometer1);
 		milli_chrono = (MilliChrono)findViewById(R.id.millichrono);
 		stop_button=(Button)findViewById(R.id.stop_button);
 		start_button=(Button)findViewById(R.id.start_button);
-		start_button.setOnClickListener(new TimerHandler());
-		stop_button.setOnClickListener(new TimerHandler());
+		TimerHandler th = new TimerHandler();
+		start_button.setOnClickListener(th);
+		stop_button.setOnClickListener(th);
 		/*start_button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
