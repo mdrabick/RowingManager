@@ -97,8 +97,8 @@ public class MilliChrono extends Chronometer {
         mVisible = visibility == VISIBLE;
         updateRunning();
     }
-
-    private synchronized void updateText(long now) {
+    
+    public synchronized void updateText(long now) {
         timeElapsed = now - mBase;
         
         DecimalFormat df = new DecimalFormat("00");
@@ -147,8 +147,7 @@ public class MilliChrono extends Chronometer {
             if (mRunning) {
                 updateText(SystemClock.elapsedRealtime());
                 dispatchChronometerTick();
-                sendMessageDelayed(Message.obtain(this , TICK_WHAT),
-                        10);
+                sendMessageDelayed(Message.obtain(this , TICK_WHAT), 10);
             }
         }
     };

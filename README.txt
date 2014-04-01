@@ -7,4 +7,6 @@ individual rowers (both voice and text).
 
 --------------------
 
-v 0.0: Started the app. 
+v 0.1.0: Single timer with hundredths of seconds implemented
+v 0.0: Started the app.
+ 

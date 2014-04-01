@@ -12,29 +12,25 @@ import android.widget.TextView;
 
 public class TimerHandler extends Activity implements OnClickListener {
 	
-	private final int MSG_START_TIMER = 0;
-    private final int MSG_STOP_TIMER = 1;
-    private final int MSG_UPDATE_TIMER = 2;
-    private final int REFRESH_RATE = 1000;
-	private Stopwatch timer =new Stopwatch();
+	private boolean stopped = false;
+	private long lastStop;
 	
 	@Override
     public void onClick(View v) {
         if(MainActivity.start_button == v)
         {
-		    MainActivity.chrono.setBase(SystemClock.elapsedRealtime());
- 		    MainActivity.chrono.start();
+        	stopped = false;
 		    MainActivity.milli_chrono.setBase(SystemClock.elapsedRealtime());
 		    MainActivity.milli_chrono.start();
-        }else
-        if(MainActivity.stop_button == v){
-        	MainActivity.chrono.setBase(SystemClock.elapsedRealtime());
-		    MainActivity.chrono.stop();
-		    MainActivity.milli_chrono.setBase(SystemClock.elapsedRealtime());
-		    MainActivity.milli_chrono.stop();
-		    long endTime = System.currentTimeMillis();
-			String elapsed = String.valueOf((endTime - MainActivity.startTime)/1000.0);
-			String elapsedSec = elapsed + " seconds";
+        }
+        else if(MainActivity.stop_button == v){
+		    if (!stopped) {
+		    	lastStop = SystemClock.elapsedRealtime();
+		    	
+			    MainActivity.milli_chrono.updateText(lastStop);
+			    MainActivity.milli_chrono.stop();
+		    	stopped = true;
+		    }
         }
     }
 
