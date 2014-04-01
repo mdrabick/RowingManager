@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		/* this is a comment */
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		field = (TextView)findViewById(R.id.field);
